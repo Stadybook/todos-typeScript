@@ -1,21 +1,20 @@
-import  { useState, useEffect, FC } from 'react';
+import { useState, useEffect, FC } from 'react';
 
 import './Timer.css';
 
-interface ITimer{
-    deadline: number, 
-    completed: boolean,
-    changeDeadline: (id:string,time:number) => void, 
+interface ITimer {
+    deadline: number;
+    completed: boolean;
+    changeDeadline: (id: string, time: number) => void;
     id: string;
 }
 
-const Timer:FC<ITimer> = ({ deadline, completed, changeDeadline, id }) => {
-
+const Timer: FC<ITimer> = ({ deadline, completed, changeDeadline, id }) => {
     const [existence, changeExistence] = useState<boolean>(false);
     const [timer, setTimer] = useState<any>(null);
     const [time, countTime] = useState<number>(deadline);
 
-    const formatting = (seconds:number) => {
+    const formatting = (seconds: number) => {
         return [Math.floor((seconds / 60) % 60), Math.floor(seconds % 60)]
             .join(':')
             .replace(/\b(\d)\b/g, '0$1');
@@ -34,7 +33,7 @@ const Timer:FC<ITimer> = ({ deadline, completed, changeDeadline, id }) => {
     };
 
     useEffect(() => {
-        changeDeadline(id,time);
+        changeDeadline(id, time);
     }, [time]);
 
     useEffect(() => {
@@ -68,7 +67,6 @@ const Timer:FC<ITimer> = ({ deadline, completed, changeDeadline, id }) => {
             {formatting(time)}
         </span>
     );
-}
-
+};
 
 export default Timer;

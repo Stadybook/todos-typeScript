@@ -1,15 +1,15 @@
-import  { useState, FC } from 'react';
+import { useState, FC } from 'react';
 import './NewTaskForm.css';
 
-interface INewTaskForm{
-    onTaskAdded:(label:string, sec:number) => void
+interface INewTaskForm {
+    onTaskAdded: (label: string, sec: number) => void;
 }
 
-const NewTaskForm:FC<INewTaskForm> = ({ onTaskAdded }) => {
+const NewTaskForm: FC<INewTaskForm> = ({ onTaskAdded }) => {
     const [label, setLabel] = useState('');
     const [time, setTime] = useState({ minutes: '', seconds: '' });
 
-    const onLabelChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const onLabelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.value.length === 1) {
             const newLabel = e.target.value.trim().replace(/ +/g, ' ');
             setLabel(newLabel);
@@ -18,7 +18,7 @@ const NewTaskForm:FC<INewTaskForm> = ({ onTaskAdded }) => {
         }
     };
 
-    const onSubmit = (e:React.KeyboardEvent<HTMLFormElement>) => {
+    const onSubmit = (e: React.KeyboardEvent<HTMLFormElement>) => {
         e.preventDefault();
         const sec =
             Math.abs(Number(time.minutes) * 60) +
@@ -63,6 +63,6 @@ const NewTaskForm:FC<INewTaskForm> = ({ onTaskAdded }) => {
             <input className='hidden' type='submit' />
         </form>
     );
-}
+};
 
 export default NewTaskForm;

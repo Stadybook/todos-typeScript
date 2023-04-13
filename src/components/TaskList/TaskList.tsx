@@ -1,25 +1,25 @@
-import {FC} from 'react';
-import {Task} from '../Task';
+import { FC } from 'react';
+
+import { Task } from '../Task';
 import './TaskList.css';
 
-export interface ITask{
-    label: string,
-      deadline: number,
-      id: string,
-      completed: boolean,
-      date: Date,
+export interface ITask {
+    label: string;
+    deadline: number;
+    id: string;
+    completed: boolean;
+    date: Date;
 }
 
-interface ITaskList{
-    todos:ITask[],
-    toggleProperty:(id:string) => void,
-    onDeleted:(id:string) => void,
-    changeDeadline: (id:string,time:number) => void, 
-    onChangeName: (id:string, newLabel:string) => void,
+interface ITaskList {
+    todos: ITask[];
+    toggleProperty: (id: string) => void;
+    onDeleted: (id: string) => void;
+    changeDeadline: (id: string, time: number) => void;
+    onChangeName: (id: string, newLabel: string) => void;
 }
 
-
-const TaskList:FC<ITaskList> = ({
+const TaskList: FC<ITaskList> = ({
     todos,
     toggleProperty,
     onDeleted,
@@ -34,7 +34,7 @@ const TaskList:FC<ITaskList> = ({
                 key={id}
                 onDeleted={() => onDeleted(id)}
                 toggleProperty={() => toggleProperty(id)}
-                onChangeName={(id,newLabel) => onChangeName(id,newLabel)}
+                onChangeName={(id, newLabel) => onChangeName(id, newLabel)}
                 changeDeadline={(id, newDeadline) =>
                     changeDeadline(id, newDeadline)
                 }
@@ -43,6 +43,6 @@ const TaskList:FC<ITaskList> = ({
     });
 
     return <ul className='todo-list'>{elements}</ul>;
-}
+};
 
 export default TaskList;

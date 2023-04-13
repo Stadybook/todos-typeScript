@@ -1,15 +1,21 @@
-import {FC} from 'react';
-import {TasksFilter} from '../TasksFilter';
+import { FC } from 'react';
+
+import { TasksFilter } from '../TasksFilter';
 import './Footer.css';
 
 interface IFooter {
-    todoTasks:number,
-    filter: string | null, 
-    onClearCompleted:() => void,
-    setFilter:(filter:string | null) => void
+    todoTasks: number;
+    filter: string | null;
+    onClearCompleted: () => void;
+    setFilter: (filter: string | null) => void;
 }
 
-const Footer:FC<IFooter> = ({ todoTasks, filter, onClearCompleted, setFilter }) => {
+const Footer: FC<IFooter> = ({
+    todoTasks,
+    filter,
+    onClearCompleted,
+    setFilter,
+}) => {
     return (
         <footer className='footer'>
             <span className='todo-count'>{todoTasks} items left</span>
@@ -23,6 +29,6 @@ const Footer:FC<IFooter> = ({ todoTasks, filter, onClearCompleted, setFilter }) 
             </button>
         </footer>
     );
-}
+};
 
 export default Footer;

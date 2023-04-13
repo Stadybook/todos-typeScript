@@ -2,16 +2,16 @@ import React, { FC } from 'react';
 
 import './TasksFilter.css';
 
-interface ITaskFilter{
+interface ITaskFilter {
     filter: string | null;
-    setFilter: (filter:string | null) => void;
+    setFilter: (filter: string | null) => void;
 }
 
- const TasksFilter:FC<ITaskFilter> = ({ filter, setFilter })=> {
+const TasksFilter: FC<ITaskFilter> = ({ filter, setFilter }) => {
     const btns = [{ name: 'All' }, { name: 'Active' }, { name: 'Completed' }];
 
     const onClick = (event: React.MouseEvent) => {
-        const classSelected = 'selected'; 
+        const classSelected = 'selected';
         if ((event.target as Element).classList.contains(classSelected)) {
             return;
         }
@@ -35,6 +35,6 @@ interface ITaskFilter{
             ))}
         </ul>
     );
-}
+};
 
 export default TasksFilter;
